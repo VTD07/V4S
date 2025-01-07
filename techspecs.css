@@ -1,0 +1,182 @@
+body,
+html 
+{
+  background-color: white;
+  height: 100%;
+  margin: 0;
+  font-family: monospace;
+}
+
+.bg1 {
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.video-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container-1 {
+    color: white;
+    position: absolute;
+    flex-direction: column;
+    bottom: 100px;
+    right: 200px;
+}
+
+.three-boxes {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+}
+
+.box-1 {
+    width: 160px;
+    height: 52px;
+    border: 2px solid #d3d3d3;
+    box-sizing: border-box;
+    border-radius: 50px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #d3d3d3;
+    cursor: pointer;
+    transition: #d3d3d3 0.3s ease, black 0.3s ease;
+}
+
+.box-1:hover {
+    border: 2px solid black;
+    color: black;
+}
+
+.container-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overview-text-1 {
+    width: 750px;
+    height: 300px;
+    font-size: 15px;
+}
+
+.container-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-4 
+{
+    width: 80%;
+}
+
+.sliding 
+{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.sliding-list 
+{
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 25px 15px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  position: relative;
+}
+
+.sliding-items 
+{
+  flex: 0 0 auto;
+  width: 100%;
+  scroll-snap-align: center;
+}
+
+.sliding-items img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.sliding-list::-webkit-scrollbar 
+{
+  height: 8px;
+}
+
+.sliding-list::-webkit-scrollbar-track 
+{
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.sliding-list::-webkit-scrollbar-thumb
+{
+  background: red;
+  border-radius: 10px;
+}
+
+.sliding-list::after 
+{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: red;
+  /* Progress bar color */
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+
+
+.function
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 100px;
+}
+.specs
+{
+  grid-column: 1/2;
+  grid-row: 1/9;
+  display: flex;
+  justify-content: space-between;
+}
+.items1
+{
+  text-align: left;
+}
+.items2
+{
+  text-align: right;
+}
+.container-4
+{
+  margin-left: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

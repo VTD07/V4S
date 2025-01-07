@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider with Click Navigation</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 50px auto;
+            overflow: hidden;
+            background-color: #111;
+            border-radius: 10px;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .slide h2 {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .nav-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .indicator-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background-color: #555;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .indicator.active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider" id="slider">
+            <div class="slide">
+                <img src="https://via.placeholder.com/900x500/FF0000/FFFFFF?text=Slide+1" alt="Slide 1">
+                <h2>Daytime Running Light (DRL)</h2>
+            </div>
+            <div class="slide">
+                <img src="https://via.placeholder.com/900x500/00FF00/FFFFFF?text=Slide+2" alt="Slide 2">
+                <h2>Another Feature</h2>
+            </div>
+            <div class="slide">
+                <img src="https://via.placeholder.com/900x500/0000FF/FFFFFF?text=Slide+3" alt="Slide 3">
+                <h2>More Information</h2>
+            </div>
+        </div>
+        <div class="navigation">
+            <button class="nav-button" id="prev">&#9664;</button>
+            <button class="nav-button" id="next">&#9654;</button>
+        </div>
+        <div class="indicator-container" id="indicators"></div>
+    </div>
+
+    <script>
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        const indicatorsContainer = document.getElementById('indicators');
+
+        let currentIndex = 0;
+
+        function updateSlider() {
+            slider.style.transform = translateX(-$,{currentIndex * 100}%);
+            updateIndicators();
+        }
+
+        function updateIndicators() {
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function createIndicators() {
+            slides.forEach((_, index) => {
+                const indicator = document.createElement('div');
+                indicator.classList.add('indicator');
+                if (index === currentIndex) indicator.classList.add('active');
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateSlider();
+                });
+                indicatorsContainer.appendChild(indicator);
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+            updateSlider();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+            updateSlider();
+        });
+
+        createIndicators();
+    </script>
+</body>
+</html>
